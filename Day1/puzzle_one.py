@@ -1,8 +1,6 @@
 
-expense_list = []
 with open("day_one.txt", 'r') as puzzle_input:
-    for line in puzzle_input:
-        expense_list.append(int(line))
+    expense_list = [int(line) for line in puzzle_input]
 
 search_set = set()
 
