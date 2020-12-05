@@ -11,7 +11,8 @@ def binary_to_int(one_c, zero_c, string):
 seat_ids = {binary_to_int("B", "F", b_pass[:7]) * 8 +
             binary_to_int("R", "L", b_pass[7:]) for b_pass in boarding_passes}
 
-for id_number in range(822):
+for id_number in reversed(range(822)):
     if id_number not in seat_ids:
         if id_number + 1 in seat_ids and id_number - 1 in seat_ids:
             print(id_number)
+            break
