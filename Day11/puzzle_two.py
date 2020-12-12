@@ -3,8 +3,8 @@ from operator import add
 with open("day_eleven.txt", 'r') as puzzle_input:
     seat_map = list(map(list, puzzle_input.read().split("\n")))
 
-y_dim = len(seat_map)
-x_dim = len(seat_map[0])
+y_size = len(seat_map)
+x_size = len(seat_map[0])
 
 print(seat_map)
 
@@ -12,12 +12,14 @@ print(seat_map)
 def seat_in_bounds(seat):
     x = seat[0]
     y = seat[1]
-    if 0 <= x < x_dim and 0 <= y < y_dim:
+    if x in range(x_size) and y in range(y_size):
         return True
     else:
         return False
 
 
+
+to_check = {}
 
 def check_direction(position, direction, array):
     seat_to_check = list(map(add, position, list(direction)))
@@ -30,6 +32,7 @@ def check_direction(position, direction, array):
             return "L"
     else:
         return "."
+
 
 
 def determine_next(x, y, old_array):
@@ -51,9 +54,9 @@ def determine_next(x, y, old_array):
 
 def update(array):
     return_array = []
-    for y in range(y_dim):
+    for y in range(y_size):
         row = []
-        for x in range(x_dim):
+        for x in range(x_size):
             row.append(determine_next(x, y, array))
         return_array.append(row)
     return return_array
