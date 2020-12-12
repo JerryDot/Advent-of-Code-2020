@@ -6,15 +6,12 @@ with open("day_twelve.txt", 'r') as puzzle_input:
 
 class Ship:
     def __init__(self):
-        # the following refer to the waypoint
+        # the following two refer to the waypoint
         self.east = 10
         self.north = 1
+
         self.travel_east = 0
         self.travel_north = 0
-
-
-direction_map = {0: "E", 1: "S", 2: "W", 3:"N",
-                 "E": 0, "S": 1, "W": 2, "N": 3}
 
 
 def rotate(ship, direction_turning, degrees):
