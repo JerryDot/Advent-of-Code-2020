@@ -7,8 +7,8 @@ def int_x(string):
 
 with open("day_13.txt", 'r') as puzzle_input:
     input = puzzle_input.read().split("\n")
-    waiting_time = int(input[0])
-    buses = list(map(int_x, input[1].split(",")))
+waiting_time = int(input[0])
+buses = list(map(int_x, input[1].split(",")))
 
 
 print(input)
