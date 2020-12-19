@@ -1,11 +1,9 @@
-# 4 + (5 + (5 * 5 + 3 + 2) + (6 + 4 * 9 * 2 * 8) * 6 + (7 * 5 * 2) * (2 * 8 * 2)) + (8 * 7 + 7) * 6 * 9 * (5 + 9)
-import copy
 
 with open("day_eighteen.txt", 'r') as puzzle_input:
     input_sums = puzzle_input.read().split("\n")
 
 
-def resolve(arithmetic):
+def resolve_brackets(arithmetic):
     if "(" not in arithmetic:
         return sums(arithmetic)
     else:
@@ -19,9 +17,9 @@ def resolve(arithmetic):
             elif arithmetic[search_index] == ")":
                 brackets_to_resolve -= 1
         ending_bracket = search_index
-        new_string = arithmetic[:starting_bracket] + str(resolve(arithmetic[starting_bracket + 1:ending_bracket])) \
+        new_string = arithmetic[:starting_bracket] + str(resolve_brackets(arithmetic[starting_bracket + 1:ending_bracket])) \
                      + arithmetic[ending_bracket+1:]
-        return resolve(new_string)
+        return resolve_brackets(new_string)
 
 
 def int_plus(stuff):
@@ -48,5 +46,5 @@ def sums(arithmetic):
 
 total = 0
 for question in input_sums:
-    total += resolve(question)
+    total += resolve_brackets(question)
 print(total)
